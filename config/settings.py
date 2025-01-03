@@ -53,6 +53,10 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "corsheaders",
+    "apps.Friends.apps.FriendsConfig",
+    "apps.Chats.apps.ChatsConfig",
+    "apps.Users.apps.UsersConfig",
+    "apps.Post.apps.PostConfig",
 ]
 
 MIDDLEWARE = [
@@ -95,7 +99,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "default",
         "USER": "root",
-        "PASSWORD": "lvf0rg",  # use your own password
+        "PASSWORD": "Supernova241020",
         "HOST": "127.0.0.1",
         "PORT": "3306",
     }

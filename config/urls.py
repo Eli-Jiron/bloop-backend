@@ -17,6 +17,24 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from apps.Chats.views import ChatsView, IntegrantesView, MessageView
+from apps.Friends.views import FriendRequestView, FriendsView
+from apps.Post.views import BoxCommentView, PostImageView, PostView
+from apps.Users.views import RolView, UserRolesView, UsersView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # Chats
+    path('chats/', ChatsView.as_view() ),
+    path('integrantes/', IntegrantesView.as_view() ),
+    path('message/', MessageView.as_view() ),
+    path('friends/', FriendsView.as_view() ),
+    path('friendRequest/', FriendRequestView.as_view() ),
+    path('post/', PostView.as_view() ),
+    path('postImage/', PostImageView.as_view() ),
+    path('boxComment/', BoxCommentView.as_view() ),
+    path('users/', UsersView.as_view() ),
+    path('rol/', RolView.as_view() ),
+    path('userRoles/', UserRolesView.as_view() )
 ]
+
