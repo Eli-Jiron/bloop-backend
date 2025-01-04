@@ -5,12 +5,12 @@ from apps.Users.models import Rol, UserRoles, Users
 
 class RolView(CreateView):
     model = Rol
-    fields = ['title', 'description']
+    fields = "__all__"
 
 class UserRolesView(CreateView):
     model = UserRoles
-    fields = ['title', 'description']
+    fields = "__all__"
     
 class UsersView(CreateView):
     model = Users
-    fields = ['title', 'description']
+    fields = "__all__"

@@ -5,8 +5,8 @@ from apps.Friends.models import FriendRequest, Friends
 
 class FriendRequestView(CreateView):
     model = FriendRequest
-    fields = ['title', 'description']
+    fields = "__all__"
 
 class FriendsView(CreateView):
     model = Friends
-    fields = ['title', 'description']
+    fields = "__all__"

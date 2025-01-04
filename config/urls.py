@@ -14,27 +14,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
 
-from apps.Chats.views import ChatsView, IntegrantesView, MessageView
-from apps.Friends.views import FriendRequestView, FriendsView
-from apps.Post.views import BoxCommentView, PostImageView, PostView
-from apps.Users.views import RolView, UserRolesView, UsersView
+
+# config/urls.py (archivo principal)
+from django.contrib import admin
+from django.urls import path, include  # Necesario para usar 'include'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # Chats
-    path('chats/', ChatsView.as_view() ),
-    path('integrantes/', IntegrantesView.as_view() ),
-    path('message/', MessageView.as_view() ),
-    path('friends/', FriendsView.as_view() ),
-    path('friendRequest/', FriendRequestView.as_view() ),
-    path('post/', PostView.as_view() ),
-    path('postImage/', PostImageView.as_view() ),
-    path('boxComment/', BoxCommentView.as_view() ),
-    path('users/', UsersView.as_view() ),
-    path('rol/', RolView.as_view() ),
-    path('userRoles/', UserRolesView.as_view() )
+    path('apps/chats/', include('apps.Chats.urls')),
+    path('apps/friends/', include('apps.Friends.urls')),
+    path('apps/post/', include('apps.Post.urls')),
+    path('apps/users/', include('apps.Users.urls')),
 ]
-
