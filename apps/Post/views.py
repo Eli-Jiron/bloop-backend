@@ -5,12 +5,12 @@ from apps.Post.models import BoxComment, Post, PostImage
 
 class BoxCommentView(CreateView):
     model = BoxComment
-    fields = ['title', 'description']
+    fields = "__all__"
 
 class PostView(CreateView):
     model = Post
-    fields = ['title', 'description']
+    fields = "__all__"
     
 class PostImageView(CreateView):
     model = PostImage
-    fields = ['title', 'description']
+    fields = "__all__"
