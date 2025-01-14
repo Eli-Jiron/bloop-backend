@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 import os
+from datetime import timedelta
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -26,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-w9d=o)wj$w^4mp&*69(b%64d=&-z%-grrtrui+exfz+%1h9s&h"
+SECRET_KEY = os.getenv("DJANGO_SECRET", default="")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -42,8 +43,14 @@ CORS_ALLOWED_ORIGINS = [
 
 CORS_ALLOW_CREDENTIALS = True
 
-# Application definition
+AUTH_USER_MODEL = "users.Users"
 
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=30),
+}
+
+# Application definition
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -52,11 +59,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "rest_framework_simplejwt",
     "corsheaders",
-    "apps.Friends.apps.FriendsConfig",
-    "apps.Chats.apps.ChatsConfig",
-    "apps.Users.apps.UsersConfig",
-    "apps.Post.apps.PostConfig",
+    "apps.friends.apps.FriendsConfig",
+    "apps.chats.apps.ChatsConfig",
+    "apps.users.apps.UsersConfig",
+    "apps.post.apps.PostConfig",
 ]
 
 MIDDLEWARE = [
@@ -99,7 +107,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "default",
         "USER": "root",
-        "PASSWORD": "Supernova241020",
+        "PASSWORD": os.getenv("MYSQL_PASSWORD", default="root"),
         "HOST": "127.0.0.1",
         "PORT": "3306",
     }

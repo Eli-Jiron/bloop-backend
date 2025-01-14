@@ -15,15 +15,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-
 # config/urls.py (archivo principal)
 from django.contrib import admin
-from django.urls import path, include  # Necesario para usar 'include'
+from django.urls import include, path  # Necesario para usar 'include'
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('apps/chats/', include('apps.Chats.urls')),
-    path('apps/friends/', include('apps.Friends.urls')),
-    path('apps/post/', include('apps.Post.urls')),
-    path('apps/users/', include('apps.Users.urls')),
+    path("admin/", admin.site.urls),
+    # path('api/chats/', include('apps.chats.urls')),
+    path("api/friends/", include("apps.friends.urls")),
+    path("api/post/", include("apps.post.urls")),
+    path("api/users/", include("apps.users.urls")),
 ]
