@@ -50,6 +50,10 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=30),
 }
 
+REST_FRAMEWORK = {
+    "EXCEPTION_HANDLER": "utils.exception_handler.simple_exception_handler",
+}
+
 # Application definition
 INSTALLED_APPS = [
     "django.contrib.admin",
