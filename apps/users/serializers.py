@@ -28,7 +28,4 @@ class RegisterUserSerializer(ModelSerializer):
 class UserSerializer(DynamicFieldsModelSerializer):
     class Meta:
         model = Users
-        fields = "__all__"
-        extra_kwargs = {
-            "password": {"write_only": True},
-        }
+        fields = ("id", "displayname", "username", "email", "date_joined", "is_active")
